@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import { Button, Switch } from 'antd';
+import React, { Suspense } from 'react'
+import { Button } from 'antd';
 import './App.css'
+const TestComponent = React.lazy(() => import('./Test'))
 
 interface Props {
   [key: string]: any // temp record
@@ -8,17 +9,6 @@ interface Props {
 
 interface State {
   count: number
-}
-
-const TestComponent = (props: Props) => {
-  const [isOpen, setStatus] = useState(true)
-
-  return (
-    <div>
-      <div>状态：{isOpen ? '开启' : '关闭'}</div>
-      <Switch checked={isOpen} onChange={() => setStatus(!isOpen)} />
-    </div>
-  )
 }
 
 class App extends React.Component<Props, State> {
@@ -29,26 +19,28 @@ class App extends React.Component<Props, State> {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     console.log('componentDidMount')
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     console.log('componentDidUpdate')
   }
 
-  render () {
+  render() {
     console.log('render')
     return (
       <div>
         <div>{this.state.count}</div>
         <Button type="primary" onClick={() => this.add()}>Add</Button>
-        <TestComponent></TestComponent>
+        <Suspense fallback={<div>Loading...</div>}>
+          <TestComponent></TestComponent>
+        </Suspense>
       </div>
     )
   }
 
-  add () {
+  add() {
     this.setState({
       count: this.state.count + 1
     })
