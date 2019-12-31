@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Button, Switch } from 'antd';
 import './App.css'
 
 interface Props {
@@ -7,6 +8,17 @@ interface Props {
 
 interface State {
   count: number
+}
+
+const TestComponent = (props: Props) => {
+  const [isOpen, setStatus] = useState(true)
+
+  return (
+    <div>
+      <div>状态：{isOpen ? '开启' : '关闭'}</div>
+      <Switch checked={isOpen} onChange={() => setStatus(!isOpen)} />
+    </div>
+  )
 }
 
 class App extends React.Component<Props, State> {
@@ -30,7 +42,8 @@ class App extends React.Component<Props, State> {
     return (
       <div>
         <div>{this.state.count}</div>
-        <button onClick={() => this.add()}>add</button>
+        <Button type="primary" onClick={() => this.add()}>Add</Button>
+        <TestComponent></TestComponent>
       </div>
     )
   }
