@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react'
 import { Button } from 'antd';
 import './App.css'
+import ChildComponent from './Child'
 const TestComponent = React.lazy(() => import('./Test'))
 
 interface Props {
@@ -28,7 +29,7 @@ class App extends React.Component<Props, State> {
   }
 
   render() {
-    console.log('render')
+    console.log('App render')
     return (
       <div>
         <div>{this.state.count}</div>
@@ -36,14 +37,20 @@ class App extends React.Component<Props, State> {
         <Suspense fallback={<div>Loading...</div>}>
           <TestComponent></TestComponent>
         </Suspense>
+        <ChildComponent count={this.state.count}></ChildComponent>
       </div>
     )
   }
 
   add() {
+    // 默认情况，每次 setState 都会导致组件 re-render
+    // 其子组件的 props 没有改变，也会 re-render
     this.setState({
       count: this.state.count + 1
     })
+
+    // this.setState(null) // 传 null 不会 re-render
+
     // this.setState({
     //   count: this.state.count + 2
     // })

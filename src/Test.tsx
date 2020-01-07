@@ -8,14 +8,16 @@ interface Props {
 const TestComponent = (props: Props) => {
   const [isOpen, setStatus] = useState(true)
 
+  console.log('Test component reder')
+
   return (
-    <div>
+    <React.Fragment>
       <div>状态：{isOpen ? '开启' : '关闭'}</div>
       <Switch checked={isOpen} onChange={() => {
         // do something ...
         setStatus(!isOpen)
       }} />
-    </div>
+    </React.Fragment>
   )
 }
 
