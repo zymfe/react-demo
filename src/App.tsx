@@ -4,6 +4,8 @@ import './App.css'
 import ChildComponent from './Child'
 const TestComponent = React.lazy(() => import('./Test'))
 
+console.log('React: ', React)
+
 interface Props {
   [key: string]: any // temp record
 }

@@ -9,7 +9,7 @@ interface State {
 }
 
 class ChildComponent extends React.Component<Props> {
-  constructor (props: Props) {
+  constructor (props: Props, context: any, updater: any) {
     super(props)
     this.state = {
 
