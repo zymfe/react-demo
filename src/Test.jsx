@@ -1,11 +1,7 @@
 import React, { useState } from 'react'
 import { Switch } from 'antd'
 
-interface Props {
-  
-}
-
-const TestComponent = (props: Props) => {
+const TestComponent = (props) => {
   const [isOpen, setStatus] = useState(true)
 
   console.log('Test component reder')

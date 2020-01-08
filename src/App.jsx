@@ -2,20 +2,13 @@ import React, { Suspense } from 'react'
 import { Button } from 'antd';
 import './App.css'
 import ChildComponent from './Child'
+import EmtryComponent from './Empty'
 const TestComponent = React.lazy(() => import('./Test'))
 
 console.log('React: ', React)
 
-interface Props {
-  [key: string]: any // temp record
-}
-
-interface State {
-  count: number
-}
-
-class App extends React.Component<Props, State> {
-  constructor (props: Props) {
+class App extends React.Component {
+  constructor (props) {
     super(props)
     this.state = {
       count: 0
@@ -40,6 +33,7 @@ class App extends React.Component<Props, State> {
           <TestComponent></TestComponent>
         </Suspense>
         <ChildComponent count={this.state.count}></ChildComponent>
+        <EmtryComponent></EmtryComponent>
       </div>
     )
   }
