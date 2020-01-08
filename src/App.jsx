@@ -1,17 +1,22 @@
 import React, { Suspense } from 'react'
 import { Button } from 'antd';
 import './App.css'
+import {ColorContext} from './context'
 import ChildComponent from './Child'
 import EmtryComponent from './Empty'
+import ContextComponent from './Context'
 const TestComponent = React.lazy(() => import('./Test'))
 
 console.log('React: ', React)
+console.log('React.createContext: ', React.createContext)
+console.log('typeof ColorContext', ColorContext.Provider)
 
 class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      count: 0
+      count: 0,
+      color: 'red'
     }
   }
 
@@ -34,8 +39,18 @@ class App extends React.Component {
         </Suspense>
         <ChildComponent count={this.state.count}></ChildComponent>
         <EmtryComponent></EmtryComponent>
+        <ColorContext.Provider value={this.state.color}>
+          <ContextComponent></ContextComponent>
+          <Button size="small" onClick={() => this.toggleColor()}>toggleColor</Button>
+        </ColorContext.Provider>
       </div>
     )
+  }
+
+  toggleColor () {
+    this.setState(preState => ({
+      color: preState.color === 'red' ? 'blue' : 'red'
+    }))
   }
 
   add() {
