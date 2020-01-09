@@ -1,5 +1,5 @@
 import React from 'react'
-import { ColorContext } from './context'
+import { ColorContext } from './context.js'
 
 class ChildComponent extends React.PureComponent {
   constructor (props) {

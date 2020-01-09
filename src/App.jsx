@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import { Button } from 'antd';
 import './App.css'
-import {ColorContext} from './context'
+import {ColorContext} from './context.js'
 import ChildComponent from './Child'
 import EmtryComponent from './Empty'
 import ContextComponent from './Context'
