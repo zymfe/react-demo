@@ -6,6 +6,7 @@ import ChildComponent from './Child'
 import EmtryComponent from './Empty'
 import ContextComponent from './Context'
 import MemoComponent from './Memo'
+import ChildrenComponent from './Children'
 const TestComponent = React.lazy(() => import('./Test'))
 
 console.log('React: ', React)
@@ -45,6 +46,11 @@ class App extends React.Component {
           <Button size="small" onClick={() => this.toggleColor()}>toggleColor</Button>
         </ColorContext.Provider>
         <MemoComponent count={this.state.count} color={this.state.color}></MemoComponent>
+        <ChildrenComponent>
+          <div index="0">0</div>
+          <div index="1">1</div>
+          <div index="2">2</div>
+        </ChildrenComponent>
       </div>
     )
   }
