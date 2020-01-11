@@ -47,9 +47,12 @@ class App extends React.Component {
         </ColorContext.Provider>
         <MemoComponent count={this.state.count} color={this.state.color}></MemoComponent>
         <ChildrenComponent>
-          <div index="0">0</div>
-          <div index="1">1</div>
-          <div index="2">2</div>
+          <div index="0">a</div>
+          <div index="1">
+            <div>b-1</div>
+            <div>b-2</div>
+          </div>
+          <div index="2">c</div>
         </ChildrenComponent>
       </div>
     )
