@@ -54,8 +54,15 @@ class App extends React.Component {
           </div>
           <div index="2">c</div>
         </ChildrenComponent>
+        <Button type="primary" onClick={() => this.isValidElement()}>isValidElement</Button>
       </div>
     )
+  }
+
+  isValidElement () {
+    console.log('<React.Fragment> isValidElement: ' + React.isValidElement(<React.Fragment></React.Fragment>)) 
+    // 编译时，将 html 标签通过 createElement 转为 React Element，所以 div 也是有效的 React Element
+    console.log('div isValidElement: ', React.isValidElement(<div></div>))
   }
 
   toggleColor () {
