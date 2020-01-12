@@ -20,10 +20,13 @@ class App extends React.Component {
       count: 0,
       color: 'red'
     }
+    this.ChildrenComponentRef = React.createRef()
   }
 
   componentDidMount() {
     console.log('componentDidMount')
+    console.log('this.ChildrenComponentRef.current: ', this.ChildrenComponentRef.current)
+    this.ChildrenComponentRef.current.printfAllChildren()
   }
 
   componentDidUpdate() {
@@ -46,7 +49,7 @@ class App extends React.Component {
           <Button size="small" onClick={() => this.toggleColor()}>toggleColor</Button>
         </ColorContext.Provider>
         <MemoComponent count={this.state.count} color={this.state.color}></MemoComponent>
-        <ChildrenComponent>
+        <ChildrenComponent ref={this.ChildrenComponentRef}>
           <div index="0">a</div>
           <div index="1">
             <div>b-1</div>

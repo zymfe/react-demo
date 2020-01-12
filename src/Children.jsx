@@ -24,6 +24,10 @@ class ChildrenComponent extends React.Component {
       </React.Fragment>
     )
   }
+
+  printfAllChildren () {
+    console.log('ChildrenComponent all children: ', this.props.children)
+  }
 }
 
 export default ChildrenComponent
