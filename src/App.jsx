@@ -11,7 +11,8 @@ const TestComponent = React.lazy(() => import('./Test'))
 
 console.log('React: ', React)
 console.log('React.createContext: ', React.createContext)
-console.log('typeof ColorContext', ColorContext.Provider)
+console.log('Context.Provider', ColorContext.Provider)
+console.log('Context.Consumer', ColorContext.Consumer)
 
 class App extends React.Component {
   constructor (props) {
@@ -34,7 +35,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('App render')
+    console.log('App render', this)
     return (
       <div>
         <div>{this.state.count}</div>
