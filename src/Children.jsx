@@ -16,7 +16,7 @@ class ChildrenComponent extends React.Component {
       <React.Fragment>
         {
           (() => {
-            const mappedChildren = React.Children.map(this.props.children, (el, index) => [el, [el, [el]], [el]])
+            const mappedChildren = React.Children.map(this.props.children, (el, index) => [el, [el, [el, [el, [el]]]], [el]])
             console.log('mappedChildren: ', mappedChildren)
             return mappedChildren
           })()
