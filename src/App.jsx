@@ -7,6 +7,7 @@ import EmtryComponent from './Empty'
 import ContextComponent from './Context'
 import MemoComponent from './Memo'
 import ChildrenComponent from './Children'
+import {HookComponent} from './Hooks'
 const TestComponent = React.lazy(() => import('./Test'))
 
 console.log('React: ', React)
@@ -37,7 +38,7 @@ class App extends React.Component {
   render() {
     console.log('App render', this)
     return (
-      <div>
+      <React.Fragment>
         <div>{this.state.count}</div>
         <Button type="primary" onClick={() => this.add()}>Add</Button>
         <Suspense fallback={<div>Loading...</div>}>
@@ -59,7 +60,8 @@ class App extends React.Component {
           <div index="2">c</div>
         </ChildrenComponent>
         <Button type="primary" onClick={() => this.isValidElement()}>isValidElement</Button>
-      </div>
+        <HookComponent></HookComponent>
+      </React.Fragment>
     )
   }
 
