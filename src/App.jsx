@@ -1,14 +1,6 @@
-import React, { Suspense } from 'react'
-import { Button } from 'antd';
+import React from 'react'
 import './App.css'
 import {ColorContext} from './context.js'
-import ChildComponent from './Child'
-import EmtryComponent from './Empty'
-import ContextComponent from './Context'
-import MemoComponent from './Memo'
-import ChildrenComponent from './Children'
-import {HookComponent} from './Hooks'
-const TestComponent = React.lazy(() => import('./Test'))
 
 console.log('React: ', React)
 console.log('React.createContext: ', React.createContext)
@@ -19,16 +11,13 @@ class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      count: 0,
+      count: 100,
       color: 'red'
     }
-    this.ChildrenComponentRef = React.createRef()
   }
 
   componentDidMount() {
     console.log('componentDidMount')
-    console.log('this.ChildrenComponentRef.current: ', this.ChildrenComponentRef.current)
-    this.ChildrenComponentRef.current.printfAllChildren()
   }
 
   componentDidUpdate() {
@@ -37,32 +26,7 @@ class App extends React.Component {
 
   render() {
     console.log('App render', this)
-    return (
-      <React.Fragment>
-        <div>{this.state.count}</div>
-        <Button type="primary" onClick={() => this.add()}>Add</Button>
-        <Suspense fallback={<div>Loading...</div>}>
-          <TestComponent></TestComponent>
-        </Suspense>
-        <ChildComponent count={this.state.count}></ChildComponent>
-        <EmtryComponent></EmtryComponent>
-        <ColorContext.Provider value={this.state.color}>
-          <ContextComponent></ContextComponent>
-          <Button size="small" onClick={() => this.toggleColor()}>toggleColor</Button>
-        </ColorContext.Provider>
-        <MemoComponent count={this.state.count} color={this.state.color}></MemoComponent>
-        <ChildrenComponent ref={this.ChildrenComponentRef}>
-          <div index="0">a</div>
-          <div index="1">
-            <div>b-1</div>
-            <div>b-2</div>
-          </div>
-          <div index="2">c</div>
-        </ChildrenComponent>
-        <Button type="primary" onClick={() => this.isValidElement()}>isValidElement</Button>
-        <HookComponent></HookComponent>
-      </React.Fragment>
-    )
+    return <div>{this.state.count}</div>
   }
 
   isValidElement () {
