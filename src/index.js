@@ -12,4 +12,9 @@ class TestApp extends React.Component {
 ReactDOM.render([
   <App key="App" />,
   <TestApp key="TestApp"></TestApp>
-], document.getElementById('root'));
+], document.getElementById('root1'));
+
+ReactDOM.render([
+  <App key="App" />,
+  <TestApp key="TestApp"></TestApp>
+], document.getElementById('root2'));

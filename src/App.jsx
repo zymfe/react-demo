@@ -26,7 +26,7 @@ class App extends React.Component {
 
   render() {
     console.log('App render', this)
-    return <div>{this.state.count}</div>
+    return <div>{this.state.count}<button onClick={() => this.add()}>add</button></div>
   }
 
   isValidElement () {
