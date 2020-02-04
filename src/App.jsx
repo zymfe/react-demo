@@ -48,6 +48,10 @@ class App extends React.Component {
       count: this.state.count + 1
     })
 
+    this.setState({
+      count: this.state.count + 1
+    })
+
     // this.setState(null) // 传 null 不会 re-render
 
     // this.setState({
