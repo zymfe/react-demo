@@ -3,5 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-ReactDOM.render(<App />, document.getElementById('root1'));
-ReactDOM.render(<App />, document.getElementById('root2'))
+class TestApp extends React.Component {
+  render () {
+    return <div>TestApp</div>
+  }
+}
+
+ReactDOM.render([
+  <App key="App" />,
+  <TestApp key="TestApp"></TestApp>
+], document.getElementById('root'));
