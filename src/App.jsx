@@ -26,7 +26,11 @@ class App extends React.Component {
 
   render() {
     console.log('App render', this)
-    return <div>{this.state.count}<button onClick={() => this.add()}>add</button></div>
+    return <React.Fragment>
+      <div>count: {this.state.count}</div>
+      <div>color: {this.state.color}</div>
+      <button onClick={() => this.add()}>add</button>
+    </React.Fragment>
   }
 
   isValidElement () {
@@ -42,15 +46,23 @@ class App extends React.Component {
   }
 
   add() {
-    // 默认情况，每次 setState 都会导致组件 re-render
-    // 其子组件的 props 没有改变，也会 re-render
-    this.setState({
-      count: this.state.count + 1
-    })
+    const count = this.state.count
 
     this.setState({
-      count: this.state.count + 1
+      count: count + 1
     })
+    console.log('count: ', this.state.count)
+
+    this.setState({
+      count: count + 2
+    })
+    console.log('count: ', this.state.count)
+
+    this.setState({
+      count: count + 3,
+      color: 'blue'
+    })
+    console.log('count: ', this.state.count)
 
     // this.setState(null) // 传 null 不会 re-render
 
