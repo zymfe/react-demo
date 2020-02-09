@@ -37,6 +37,8 @@
   },
   "devDependencies": {
     "antd": "^3.26.5",
-    "react-app-rewired": "^2.1.5"
+    "react": "0.0.0-experimental-241c4467e",
+    "react-app-rewired": "^2.1.5",
+    "react-dom": "0.0.0-experimental-241c4467e"
   }
 }
