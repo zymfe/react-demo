@@ -18,6 +18,7 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log('componentDidMount')
+    this.add()
   }
 
   componentDidUpdate() {
@@ -48,19 +49,27 @@ class App extends React.Component {
   add() {
     const count = this.state.count
 
-    this.setState({
+    this.setState(previousState => ({
       count: count + 1
+    }), function () {
+      console.log('1')
     })
     console.log('count: ', this.state.count)
 
-    this.setState({
-      count: count + 2
+    setTimeout(() => {
+      this.setState(previousState => ({
+        count: count + 2
+      }), function () {
+        console.log('2')
+      })
     })
     console.log('count: ', this.state.count)
 
-    this.setState({
+    this.setState(previousState => ({
       count: count + 3,
       color: 'blue'
+    }), function () {
+      console.log('3')
     })
     console.log('count: ', this.state.count)
 
