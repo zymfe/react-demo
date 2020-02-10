@@ -18,7 +18,6 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log('componentDidMount')
-    this.add()
   }
 
   componentDidUpdate() {
@@ -56,12 +55,10 @@ class App extends React.Component {
     })
     console.log('count: ', this.state.count)
 
-    setTimeout(() => {
-      this.setState(previousState => ({
-        count: count + 2
-      }), function () {
-        console.log('2')
-      })
+    this.setState(previousState => ({
+      count: count + 2
+    }), function () {
+      console.log('2')
     })
     console.log('count: ', this.state.count)
 
