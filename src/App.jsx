@@ -26,11 +26,12 @@ class App extends React.Component {
 
   render() {
     console.log('App render', this)
-    return <React.Fragment>
-      <div>count: {this.state.count}</div>
-      <div>color: {this.state.color}</div>
-      <button onClick={() => this.add()}>add</button>
-    </React.Fragment>
+    // return <React.Fragment>
+    //   <div>count: {this.state.count}</div>
+    //   <div>color: {this.state.color}</div>
+    //   <button onClick={() => this.add()}>add</button>
+    // </React.Fragment>
+    return this.state.count
   }
 
   isValidElement () {
