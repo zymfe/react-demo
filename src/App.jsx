@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
 import {ColorContext} from './context.js'
+import {HookComponent} from './Hooks'
 
 console.log('React: ', React)
 console.log('React.createContext: ', React.createContext)
@@ -31,7 +32,12 @@ class App extends React.Component {
     //   <div>color: {this.state.color}</div>
     //   <button onClick={() => this.add()}>add</button>
     // </React.Fragment>
-    return this.state.count
+    return <React.Fragment>
+      <div>{this.state.count}</div>
+      <HookComponent color={this.state.color}>
+        <div>123</div>
+      </HookComponent>
+    </React.Fragment> 
   }
 
   isValidElement () {
