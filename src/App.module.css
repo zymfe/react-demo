@@ -38,3 +38,10 @@
     transform: rotate(360deg);
   }
 }
+
+.button {
+  border: none;
+  background: #ccc;
+  color: #fff;
+  font-size: 30px;
+}

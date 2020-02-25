@@ -1,7 +1,7 @@
 import React from 'react'
-import './App.css'
+import appStyles from './App.module.css'
 import {ColorContext} from './context.js'
-import {HookComponent} from './Hooks'
+import PropsComponent from './Props'
 
 console.log('React: ', React)
 console.log('React.createContext: ', React.createContext)
@@ -26,17 +26,16 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('App render', this)
+    console.log('App render', this, appStyles)
     // return <React.Fragment>
     //   <div>count: {this.state.count}</div>
     //   <div>color: {this.state.color}</div>
     //   <button onClick={() => this.add()}>add</button>
     // </React.Fragment>
     return <React.Fragment>
-      <div>{this.state.count}</div>
-      <HookComponent color={this.state.color}>
-        <div>123</div>
-      </HookComponent>
+      <div>color: {this.state.color}</div>
+      <button className={appStyles.button} onClick={() => this.toggleColor()}>toggle color</button>
+      <PropsComponent color={this.state.color} onChangeColor={(color) => this.onChangeColor(color)}></PropsComponent>
     </React.Fragment> 
   }
 
@@ -49,6 +48,12 @@ class App extends React.Component {
   toggleColor () {
     this.setState(preState => ({
       color: preState.color === 'red' ? 'blue' : 'red'
+    }))
+  }
+
+  onChangeColor (color) {
+    this.setState(prevState => ({
+      color
     }))
   }
 
